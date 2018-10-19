@@ -6,8 +6,14 @@
 
  body {
     overflow-x: hidden;
+    background-image: url("https://walker-web.imgix.net/cms/Gradient_builder_2.jpg?auto=format,compress&w=1920&h=1200&fit=max&dpr=1.5");
+    background-repeat: repeat;
   }
-  
+p {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+
+}
   #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -28,7 +34,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background-image: url("https://www.xmple.com/wallpaper/red-white-gradient-linear-2736x1824-c2-b22222-ffffff-a-90-f-14.svg");
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -70,12 +76,12 @@
   .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #fffdfd;
   }
   
   .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: rgb(255, 177, 9);
     background: rgba(255, 255, 255, 0.2);
   }
   
@@ -90,11 +96,11 @@
   }
   
   .sidebar-nav>.sidebar-brand a {
-    color: #999999;
+    color: #030ea3;
   }
   
   .sidebar-nav>.sidebar-brand a:hover {
-    color: #fff;
+    color: rgb(125, 121, 173);
     background: none;
   }
   
@@ -122,7 +128,7 @@
   }
   /*---Registration Main Page---*/
   .register{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    background: -webkit-linear-gradient(left, #7255c0, #6995a1);
     margin-top: 3%;
     padding: 3%;
   }
@@ -144,7 +150,7 @@
     cursor: pointer;
   }
   .register-right{
-    background: #f8f9fa;
+    background: #dde0e4;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
   }
