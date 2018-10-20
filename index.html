@@ -62,96 +62,61 @@
 
                 <p>Your voting buddy that gives you election information at the tip of your fingers.</p>
                 <p style="color: rgb(12, 10, 134); font-size: 24px;">Everything in your Ballot, in one place.</p>
-                <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle Menu</a>
+                <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Get Started</a>
 
-                <div class="container register">
-                    <div class="row">
-                        <div class="col-md-3 register-left">
-                            <img src="https://png.icons8.com/ultraviolet/1600/elections.png" alt="Voting Image" height="150"
-                                width="700" />
-                            <h1>Welcome</h1>
-                            <p>You are 30 seconds away from being Ballot ready!</p>
-                            <input type="submit" name="" value="Login" /><br />
-                        </div>
-                        <div class="col-md-9 register-right">
-                            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                        aria-controls="home" aria-selected="true">Sign-up</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                        aria-controls="profile" aria-selected="false">Log-in</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <h3 class="register-heading">Please fill in this form to get full access</h3>
-                                    <hr>
-                                    <div class="row register-form">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="First Name"><b>First Name</b></label>
-                                                <input id="first-name" type="text" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Last Name"><b>Last Name</b></label>
-                                                <input id="last-name" type="text" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Password"><b>Password</b></label>
-                                                <input id="password" type="password" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Confirm Password"><b>Confirm Password</b></label>
-                                                <input id="password-confirm" type="password" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Full Address"><b>Full Address</b></label>
-                                                <input id="address" type="text" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input id="email" type="email" class="form-control" placeholder="Primary Email" />
-                                            </div>
-                                            <div class="form-group">
-                                                <select id="security-question" class="form-control">
-                                                    <option class="hidden" selected disabled>Please select your
-                                                        Sequrity Question</option>
-                                                    <option>What is your Birthdate?</option>
-                                                    <option>What is Your old Phone Number</option>
-                                                    <option>What is your Pet Name?</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
 
-                                            </div>
-                                            <button id="submit-button" class="btnRegister"> Register</button>
-                                        </div>
+                <!-- Sign up form -->
+                <section class="signup">
+                    <div class="container-fluid">
+                        <div class="signup-content">
+                            <div class="signup-form">
+                                <h2 class="form-title">Sign up</h2>
+                                <form method="POST" class="register-form" id="register-form">
+                                    <div class="form-group">
+                                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                        <input type="text" name="name" id="name" placeholder="Your Name" />
                                     </div>
-                                </div>
-                                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <h3 class="register-heading">Log-in to your Account</h3>
-                                    <div class="row register-form">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Email" value="" />
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Password" value="" />
-                                            </div>
-                                            <input type="submit" class="btnRegister" value="Log-in" />
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                        <input type="email" name="email" id="email" placeholder="Your Email" />
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                        <input type="password" name="pass" id="pass" placeholder="Password" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat Password" />
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option class="hidden" selected disabled>How did you hear about us?</option>
+                                            <option>Internt</option>
+                                            <option>Local Ad</option>
+                                            <option>Friend</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I
+                                            agree to all
+                                            statements in <a href="#" class="term-service">Terms of service</a></label>
+                                    </div>
+                                    <div class="form-group form-button">
+                                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="signup-image">
+                                <figure><img src="https://cdn.dribbble.com/users/285475/screenshots/2863164/anya-hindmarch2.gif"
+                                        alt="sign in image"></figure>
+                                <a href="signUp.html" class="signin-image-link">I am already a member</a>
                             </div>
                         </div>
                     </div>
-
-                </div>
+                </section>
             </div>
         </div>
     </div>
@@ -162,10 +127,6 @@
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
-    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
-    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
-        crossorigin='anonymous'></script>
-    <script src="app.js"></script>
     <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
         crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
