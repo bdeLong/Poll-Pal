@@ -12,12 +12,19 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    window.location.replace("logged-in.html");
+  }
+});
+
 $("#submit-button").on("click", function (event) {
   event.preventDefault();
   var name = $("#name").val().trim();
   var password = $("#password").val().trim();
   var passwordConfirm = $("#password-confirm").val().trim();
   var email = $("#email").val().trim();
+  var address = $("#address").val().trim();
 
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
     var errorCode = error.code;
@@ -28,10 +35,21 @@ $("#submit-button").on("click", function (event) {
   });
 
   if (name !== "" && password !== "" && password === passwordConfirm && email !== "") {
-    database.ref().set({
-      name
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        var uid = user.uid;
+        console.log(email, uid);
+        database.ref("users/" + uid).set({
+          name,
+          address
+        })
+        setTimeout(function () {
+          window.location.replace("logged-in.html");
+        }, 2000);
+      }
     });
-    // window.location.replace("site.html");
+
   }
   else if (password !== passwordConfirm) {
     //change this from an alert later
@@ -41,4 +59,5 @@ $("#submit-button").on("click", function (event) {
   $("#password").val("")
   $("#password-confirm").val("")
   $("#email").val("")
+  $("#address").val("");
 });
