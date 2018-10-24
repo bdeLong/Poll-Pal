@@ -60,26 +60,42 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container">
-        <h1 style="font-family: 'Righteous', cursive; font-size: 10em; color:rgb(59, 59, 165);"><strong>Poll Pal</strong></h1>
-        <a href="" id="log-out">Log Out</a>
+        <div class="row">
+          <div class="col-md-10">
+            <h1 style="font-family: 'Righteous', cursive; font-size: 10em; color:rgb(59, 59, 165);"><strong>Poll Pal</strong></h1>
+          </div>
+          <div class="col-md-2">
+            <a href="" id="log-out">
+              <h6>Log Out</h6>
+            </a>
+          </div>
+        </div>
 
-        <p>Your voting buddy that gives you election information at the tip of your fingers.</p>
-        <p style="color: rgb(12, 10, 134); font-size: 24px;">Everything in your Ballot, in one place.</p>
-        <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Get Started</a>
         <div class="row">
           <div class="col-md-12">
+            <p>Your voting buddy that gives you election information at the tip of your fingers.</p>
+            <p style="color: rgb(12, 10, 134); font-size: 24px;">Everything in your Ballot, in one place.</p>
+            <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">View Your Ballot Picks</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <br>
             <h2>Welcome, <span id="name"></span></h2>
             <h5>Election Day is <span id="election-date"></span>!</h5>
             <div class="row">
-              <div class="col-md-6 text-center">
-                <h5>Your Polling Location is:</h5>
+              <div class="col-md-5 text-center">
+                <br>
+                <h3>Your Polling Location Is:</h3>
                 <div id="polling-places"></div>
                 <div class="polling-place-info"></div>
               </div>
-              <div class="col-md-6 text-center">
+              <div class="col-md-2">
                 <div id="poll-deets"></div>
-                <div id="map"></div>
               </div>
+              <div class="col-md-5 text-center" id="map">
+              </div>
+
             </div>
 
           </div>
@@ -99,6 +115,11 @@
 
   </div>
   <!-- /#wrapper -->
+
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW0oEtfbFBFV69-QEb_RD5Kt7PgjgZ8LA">
+  </script>
+
   <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
     crossorigin='anonymous'></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

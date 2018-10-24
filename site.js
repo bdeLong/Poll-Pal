@@ -37,6 +37,7 @@ firebase.auth().onAuthStateChanged(function (user) {
           for (var p = 0; p < pollingPlaces.length; p++) {
             var pollingAddressRef = pollingPlaces[p].address;
             var pollingLocation = $("<p>");
+            pollingLocation.attr("id", "poll-address")
             var pollInfoBttn = $("<button>").text("More Info");
             if (pollingAddressRef.line2 !== undefined) {
               pollingLocation.html(pollingAddressRef.locationName + "<br>" + pollingAddressRef.line1 + "<br>" + pollingAddressRef.line2 + "<br>" + pollingAddressRef.city + ", " + pollingAddressRef.state + " " + pollingAddressRef.zip);
@@ -52,6 +53,8 @@ firebase.auth().onAuthStateChanged(function (user) {
           };
         };
 
+
+
         $(".poll-more-info-btn").on("click", function () {
           var pollPlaceIndex = $(this).attr("data-poll-place-index");
           var pollPlaceHours = $("<p>")
@@ -62,6 +65,28 @@ firebase.auth().onAuthStateChanged(function (user) {
             pollPlaceNotes.text("Special Notes : " + pollingPlaces[pollPlaceIndex].notes);
             $("#poll-deets").append(pollPlaceNotes);
           }
+
+          var directionsService = new google.maps.DirectionsService();
+          var directionsDisplay = new google.maps.DirectionsRenderer();
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+
+          directionsDisplay.setMap(map);
+
+          var request = {
+            origin: address,
+            destination: $("#poll-address").text(),
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+          };
+
+          directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+            }
+          });
 
 
           //add map and shit
@@ -97,7 +122,12 @@ firebase.auth().onAuthStateChanged(function (user) {
               });
               candidateInfoBttn.text("View More");
               candidateName.text(candidates[c].name);
-              candidateParty.text(candidates[c].party)
+              if (candidates[c].party !== undefined) {
+                candidateParty.text(candidates[c].party);
+              }
+              else if (candidates[c].party === undefined) {
+                candidateParty.text("No Affiliated Party");
+              };
               candidateDiv.append(candidateName, candidateParty, chooseCandidate, candidateInfoBttn);
               ballotDiv.append(candidateDiv);
               ballotInfo.append(ballotDiv);
