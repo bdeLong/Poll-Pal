@@ -1007,4 +1007,47 @@ label.valid:after {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+#ballot-info {
+  text-align: center;
+  justify-content: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+}
+
+.d-inline-block {
+  color: red;
+  padding: 20px;
+  margin: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px;
+  background: #7ea3b0;
+  text-decoration-color: #000000;
+
+}
+
+.add-to-ballot d-block {
+  color:red;
+}
+
+#race0 #race1 #race2 {
+  color: white;
+  padding: 50px;
+}
+
+#polling-places {
+  padding: 20px;
+  margin: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px;
+  background: #e6826c;
+  text-decoration-color: #dde6e5;
+  text-align: center;
+  margin-left: 5em;
+ 
+}
+
+/*# sourceMappingURL=style.css.map
