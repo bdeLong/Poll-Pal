@@ -44,6 +44,11 @@ $("#submit-button").on("click", function (event) {
           name,
           address
         })
+        $("#name").val("")
+        $("#password").val("")
+        $("#password-confirm").val("")
+        $("#email").val("")
+        $("#address").val("");
         setTimeout(function () {
           window.location.replace("logged-in.html");
         }, 2000);
@@ -55,9 +60,4 @@ $("#submit-button").on("click", function (event) {
     //change this from an alert later
     alert("Passwords do not match!")
   }
-  $("#name").val("")
-  $("#password").val("")
-  $("#password-confirm").val("")
-  $("#email").val("")
-  $("#address").val("");
 });
