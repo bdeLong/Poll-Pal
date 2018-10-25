@@ -12,6 +12,11 @@
    font-weight: 700;
  }
 
+ #menu-toggle:focus{
+   outline: none;
+  font-weight: 700;
+}
+
 .add-to-ballot {
   border-radius: 12px;
   background-color: #d45050;
@@ -19,7 +24,20 @@
   letter-spacing: 0.5em;
 }
 
+.add-to-ballot:focus {
+  outline: none;
+  border-radius: 12px;
+  background-color: #d45050;
+  border: 2px solid #ffc107;
+  letter-spacing: 0.5em;
+}
+
 .poll-more-info-btn{
+  border-radius: 5px;
+}
+
+.poll-more-info-btn:focus{
+  outline: none;
   border-radius: 5px;
 }
 
@@ -63,6 +81,14 @@ button.add-to-ballot:hover {
   border: 2px solid #ffc107;
   letter-spacing: 0.5em;
 }
+
+.cand-info:focus {
+  outline:none;
+  border-radius: 12px;
+  border: 2px solid #ffc107;
+  letter-spacing: 0.5em;
+}
+
 button.cand-info:hover {
   background-color: gold;
 }
