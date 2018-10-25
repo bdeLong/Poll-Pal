@@ -15,7 +15,31 @@ var database = firebase.database();
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     var uid = user.uid
-    console.log(firebase.auth().currentUser);
+    database.ref("users/" + uid + "/ballot").on('value', function (snapshot) {
+      $("#ballot-sidebar").html("");
+
+      snapshot.forEach(function (childNodes) {
+        var office = $("<li>");
+        var district = $("<p>");
+        var candidate = $("<p>");
+        var party = $("<p>");
+        office.text(childNodes.val().office);
+        district.text(childNodes.val().district);
+        candidate.text(childNodes.val().candidate);
+        party.text(childNodes.val().candidateParty);
+        office.append(district, candidate, party);
+        $("#ballot-sidebar").append(office);
+      });
+    });
+
+    $("#menu-toggle").on("click", function () {
+      if ($("#menu-toggle").text() === "View Your Ballot Picks") {
+        $("#menu-toggle").text("Hide Your Ballot Picks");
+      }
+      else if ($("#menu-toggle").text() === "Hide Your Ballot Picks") {
+        $("#menu-toggle").text("View Your Ballot Picks");
+      };
+    });
 
     database.ref("users/" + uid).once("value", function (snapshot) {
       $("#name").text(snapshot.val().name);
@@ -31,7 +55,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         var elections = response.contests
         var pollingPlaces = response.pollingLocations;
         if (pollingPlaces === undefined) {
-          $("#polling-places").html("<p>Polling Location Info Unavailable, Please check other sources </p>")
+          $("#polling-places").html("<p>Polling Location Info Unavailable. Please check out <a href=\"https://www.vote.org/polling-place-locator/\" target=\"blank\">Vote.org</a>to find your polling place.</p>")
         }
         else {
           for (var p = 0; p < pollingPlaces.length; p++) {
@@ -54,11 +78,21 @@ firebase.auth().onAuthStateChanged(function (user) {
         };
 
 
-
+        $("#poll-deets").hide();
+        $("#map").hide();
         $(".poll-more-info-btn").on("click", function () {
+          $("#poll-deets").html("");
+          if ($(".poll-more-info-btn").text() === "More Info") {
+            $(".poll-more-info-btn").text("Less Info");
+          }
+          else if ($(".poll-more-info-btn").text() === "Less Info") {
+            $(".poll-more-info-btn").text("More Info");
+          }
+          $("#poll-deets").toggle();
+          $("#map").toggle();
           var pollPlaceIndex = $(this).attr("data-poll-place-index");
           var pollPlaceHours = $("<p>")
-          pollPlaceHours.text("Hours : " + pollingPlaces[pollPlaceIndex].pollingHours);
+          pollPlaceHours.html("Polling Location Hours : " + pollingPlaces[pollPlaceIndex].pollingHours);
           $("#poll-deets").append(pollPlaceHours);
           if (pollingPlaces[pollPlaceIndex].notes !== "") {
             var pollPlaceNotes = $("<p>");
@@ -87,9 +121,6 @@ firebase.auth().onAuthStateChanged(function (user) {
               directionsDisplay.setDirections(response);
             }
           });
-
-
-          //add map and shit
         });
 
         for (var i = 0; i < elections.length; i++) {
@@ -100,12 +131,12 @@ firebase.auth().onAuthStateChanged(function (user) {
           var electionName = $("<p>");
           var electionDistrict = $("<p>");
           electionName.text(elections[i].office);
-          electionDistrict.text(elections[i].district.name)
+          electionDistrict.text("District: " + elections[i].district.name)
           ballotDiv.append(electionName, electionDistrict);
           if (candidates !== undefined) {
             for (var c = 0; c < candidates.length; c++) {
               var candidateDiv = $("<div>");
-              candidateDiv.attr("class", "d-inline-block");
+              candidateDiv.attr("class", "candidate-holder d-inline-block");
               var candidateName = $("<p>");
               var candidateParty = $("<p>");
               var chooseCandidate = $("<button>").text("Add to Ballot");
@@ -143,12 +174,25 @@ firebase.auth().onAuthStateChanged(function (user) {
         $(".add-to-ballot").on("click", function () {
           var electionIndex = $(this).attr("data-elec-index");
           var candidateIndex = $(this).attr("data-cand-index");
-          database.ref("users/" + uid + "/ballot/ballot-position-" + electionIndex).set({
-            office: elections[electionIndex].office,
-            district: elections[electionIndex].district.name,
-            candidate: elections[electionIndex].candidates[candidateIndex].name,
-            candidateParty: elections[electionIndex].candidates[candidateIndex].party
-          });
+          var electionRef = elections[electionIndex];
+          var candidateRef = elections[electionIndex].candidates[candidateIndex];
+
+          if (candidateRef.party === undefined) {
+            database.ref("users/" + uid + "/ballot/ballot-position-" + electionIndex).set({
+              office: electionRef.office,
+              district: "District: " + electionRef.district.name,
+              candidate: "Candidate: " + candidateRef.name,
+              candidateParty: "Party: No Affiliated Party"
+            });
+          }
+          else {
+            database.ref("users/" + uid + "/ballot/ballot-position-" + electionIndex).set({
+              office: electionRef.office,
+              district: "District: " + electionRef.district.name,
+              candidate: "Candidate: " + candidateRef.name,
+              candidateParty: "Party: " + candidateRef.party
+            });
+          }
         });
 
         $(".cand-info").on("click", function () {
