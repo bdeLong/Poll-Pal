@@ -26,15 +26,14 @@ $("#submit-button").on("click", function (event) {
   var email = $("#email").val().trim();
   var address = $("#address").val().trim();
 
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    if (errorCode === 'auth/weak-password' || errorCode === 'auth/email-already-in-use' || errorCode === 'auth/invalid-email' || errorCode === 'auth/operation-not-allowed') {
-      alert(errorMessage);
-    };
-  });
-
   if (name !== "" && password !== "" && password === passwordConfirm && email !== "") {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      if (errorCode === 'auth/weak-password' || errorCode === 'auth/email-already-in-use' || errorCode === 'auth/invalid-email' || errorCode === 'auth/operation-not-allowed') {
+        bootbox.alert(errorCode + " : " + errorMessage);
+      };
+    });
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
@@ -44,6 +43,11 @@ $("#submit-button").on("click", function (event) {
           name,
           address
         })
+        $("#name").val("")
+        $("#password").val("")
+        $("#password-confirm").val("")
+        $("#email").val("")
+        $("#address").val("");
         setTimeout(function () {
           window.location.replace("logged-in.html");
         }, 2000);
@@ -52,12 +56,6 @@ $("#submit-button").on("click", function (event) {
 
   }
   else if (password !== passwordConfirm) {
-    //change this from an alert later
-    alert("Passwords do not match!")
+    bootbox.alert("Passwords do not match!");
   }
-  $("#name").val("")
-  $("#password").val("")
-  $("#password-confirm").val("")
-  $("#email").val("")
-  $("#address").val("");
 });

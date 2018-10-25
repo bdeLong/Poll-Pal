@@ -22,8 +22,9 @@ $("#login-button").on("click", function (event) {
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
+    var errorMessage = error.message;
     if (errorCode === 'auth/invalid-email' || errorCode === 'auth/user-disabled' || errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password') {
-      alert(errorCode)
+      bootbox.alert(errorCode + " : " + errorMessage);
     };
   });
   firebase.auth().onAuthStateChanged(function (user) {

@@ -1,24 +1,113 @@
-.d-block {
+
+/*
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+ *:focus{
+  outline: none;
+ } 
+
+ #menu-toggle{
+   font-weight: 700;
+ }
+
+ #menu-toggle:focus{
+   outline: none;
+  font-weight: 700;
+}
+
+.add-to-ballot {
   border-radius: 12px;
-  background-image: url("https://cdn.pixabay.com/photo/2014/06/20/04/56/american-flag-372879_960_720.jpg");
+  background-color: #d45050;
   border: 2px solid #ffc107;
   letter-spacing: 0.5em;
 }
-button.add-to-ballot.d-block:hover {
-  background-image: url("https://cdn.pixabay.com/photo/2017/04/03/15/52/love-you-2198772_960_720.png");
+
+.add-to-ballot:focus {
+  outline: none;
+  border-radius: 12px;
+  background-color: #d45050;
+  border: 2px solid #ffc107;
+  letter-spacing: 0.5em;
+}
+
+.poll-more-info-btn{
+  border-radius: 5px;
+}
+
+.poll-more-info-btn:focus{
+  outline: none;
+  border-radius: 5px;
+}
+
+.slick-next{
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  right: 0;
+}
+.slick-next:focus{
+  outline: none;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  right: 0;
+}
+.slick-prev{
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 0;
+}
+.slick-prev:focus{
+  outline:none;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 0;
+}
+
+button.add-to-ballot:hover {
+  background-color: gold;
 }
 .cand-info {
   border-radius: 12px;
-  background-image: url("https://cdn.pixabay.com/photo/2017/03/14/21/00/american-flag-2144392_960_720.png");
   border: 2px solid #ffc107;
   letter-spacing: 0.5em;
 }
+
+.cand-info:focus {
+  outline:none;
+  border-radius: 12px;
+  border: 2px solid #ffc107;
+  letter-spacing: 0.5em;
+}
+
 button.cand-info:hover {
-  background-image: url("https://cdn.pixabay.com/photo/2016/06/02/02/35/mesh-1430107_960_720.png");
+  background-color: gold;
+}
+li {
+  color: white;
+  margin-left: 5px;
+}
+li p{
+  font-family: "Fredoka One", cursive;
+  margin-bottom: 0px;
+  font-size: 15px;
+  color: #212529;
+  margin: 5px 0 3px 5px;
 }
 p {
   font-family: "Fredoka One", cursive;
   font-size: 20px;
+  margin-bottom: 0px;
+  font-size: 15px;
 }
 #wrapper {
   padding-left: 0;
@@ -47,32 +136,26 @@ p {
   position: absolute;
   padding: 15px;
 }
-.sidebar-nav {
+
+#wrapper.toggled #page-content-wrapper {
   position: absolute;
-  width: 250px;
+  margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-list {
+  /* top: 0; */
+  width: 230px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
-.sidebar-nav li {
-  text-indent: 20px;
-  line-height: 40px;
-}
 
-.sidebar-nav li a {
-  display: block;
-  text-decoration: none;
-  color: #ffffff;
-}
-.sidebar-nav li a:hover {
-  text-decoration: none;
-  color: rgb(211, 133, 211);
-}
-.sidebar-nav > .sidebar-brand a {
-  color: #0010f5;
-}
-.sidebar-nav > .sidebar-brand a:hover {
-  color: rgb(156, 105, 159);
-  background: none;
+.sidebar-list li {
+  text-align: center;
+  line-height: 40px;
+  font-weight: 900;
 }
 @media (min-width: 768px) {
   #wrapper {
@@ -174,12 +257,6 @@ img {
 
 figure {
   margin: 0;
-}
-
-p {
-  margin-bottom: 0px;
-  font-size: 15px;
-  color: #777;
 }
 
 h2 {
@@ -692,8 +769,7 @@ label.valid:after {
   -ms-justify-content: center;
 }
 
-.d-inline-block {
-  color: red;
+.candidate-holder {
   padding: 20px;
   margin: 15px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -704,9 +780,6 @@ label.valid:after {
 
 }
 
-.add-to-ballot d-block {
-  color:red;
-}
 
 #race0 #race1 #race2 {
   color: white;
