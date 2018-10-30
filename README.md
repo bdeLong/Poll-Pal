@@ -3,7 +3,6 @@
 ## APIs:
 
 Google Civis API: https://developers.google.com/civic-information/
-Key: AIzaSyBmJANq4OlNTIkJm2GH89UzRc9iEyTqWyA
 ProPublica API: https://projects.propublica.org/api-docs/congress-api/
 Opensecrets.org API, where money was spent
 
